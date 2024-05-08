@@ -6,7 +6,6 @@ import com.demo.redis.integration.model.Account;
 import com.demo.redis.integration.repository.AccountRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
