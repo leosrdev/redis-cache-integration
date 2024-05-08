@@ -8,7 +8,7 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class AccountResponse {
-    private int id;
+    private String id;
     private String address;
     private String phone;
 }
