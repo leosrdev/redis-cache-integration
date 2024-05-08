@@ -7,6 +7,7 @@ import com.demo.redis.integration.repository.AccountRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class AccountService {
     @Autowired
     private final AccountRepository accountRepository;
 
+    @Cacheable("accounts")
     public AccountResponse create(AccountRequest accountRequest) {
         Account account = mapToEntity(accountRequest);
         Account newAccount = accountRepository.save(account);

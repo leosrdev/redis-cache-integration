@@ -22,6 +22,9 @@ public class RedisConfig {
     @Value("${redis.port}")
     private int redisPort;
 
+    @Value("${redis.default.ttl.minutes}")
+    private int defaultTTL;
+
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
         RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(redisHost, redisPort);
@@ -30,7 +33,7 @@ public class RedisConfig {
 
     @Bean
     public RedisCacheManager cacheManager() {
-        RedisCacheConfiguration cacheConfig = redisDefaultCacheConfig(Duration.ofMinutes(10)).disableCachingNullValues();
+        RedisCacheConfiguration cacheConfig = redisDefaultCacheConfig(Duration.ofMinutes(defaultTTL)).disableCachingNullValues();
 
         return RedisCacheManager.builder(redisConnectionFactory())
                 .cacheDefaults(cacheConfig)
