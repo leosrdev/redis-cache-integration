@@ -19,7 +19,6 @@ public class AccountService {
     @Autowired
     private final AccountRepository accountRepository;
 
-    @Cacheable("accounts")
     public AccountResponse create(AccountRequest accountRequest) {
         Account account = mapToEntity(accountRequest);
         Account newAccount = accountRepository.save(account);

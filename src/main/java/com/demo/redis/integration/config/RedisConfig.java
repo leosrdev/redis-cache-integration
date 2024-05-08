@@ -34,10 +34,8 @@ public class RedisConfig {
     @Bean
     public RedisCacheManager cacheManager() {
         RedisCacheConfiguration cacheConfig = redisDefaultCacheConfig(Duration.ofMinutes(defaultTTL)).disableCachingNullValues();
-
         return RedisCacheManager.builder(redisConnectionFactory())
                 .cacheDefaults(cacheConfig)
-                .withCacheConfiguration("accounts", redisDefaultCacheConfig(Duration.ofMinutes(5)))
                 .build();
     }
 
